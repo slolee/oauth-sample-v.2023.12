@@ -17,6 +17,9 @@ export default {
                 state: state
             },
             withCredentials: true
+        }).then((data) => {
+            alert("LOGIN SUCCESS!!");
+            alert(data);
         })
     }
 }
