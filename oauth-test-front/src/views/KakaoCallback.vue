@@ -19,7 +19,7 @@ export default {
             withCredentials: true
         }).then((data) => {
             alert("LOGIN SUCCESS!!");
-            alert(data);
+            console.log(data);
         })
     }
 }
