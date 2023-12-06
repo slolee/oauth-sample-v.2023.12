@@ -11,7 +11,7 @@ export default {
         const code = urlParams.get('code');
         const state = urlParams.get('state');
 
-        axios.get("http://localhost:8080/oauth2/kakao/callback", {
+        axios.get("http://223.130.129.170:8080/oauth2/kakao/callback", {
             params: {
                 code: code,
                 state: state
