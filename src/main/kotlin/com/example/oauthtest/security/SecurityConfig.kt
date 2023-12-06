@@ -1,5 +1,6 @@
 package com.example.oauthtest.security
 
+import com.example.oauthtest.security.oauth.CustomAuthorizationRequestRepository
 import com.example.oauthtest.security.oauth.OAuthLoginSuccessHandler
 import com.example.oauthtest.security.oauth.OAuthUserService
 import org.springframework.context.annotation.Bean
@@ -13,8 +14,9 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource
 
 @Configuration
 class SecurityConfig(
-    private val oauthUserService: OAuthUserService,
-    private val oAuthLoginSuccessHandler: OAuthLoginSuccessHandler
+    private val oAuthUserService: OAuthUserService,
+    private val oAuthLoginSuccessHandler: OAuthLoginSuccessHandler,
+    private val oAuthAuthorizationRequestRepository: CustomAuthorizationRequestRepository
 ) {
 
     @Bean
@@ -30,7 +32,9 @@ class SecurityConfig(
                 oauthConfig.redirectionEndpoint {
                     it.baseUri("/oauth2/*/callback")
                 }.userInfoEndpoint {
-                    it.userService(oauthUserService)
+                    it.userService(oAuthUserService)
+                }.authorizationEndpoint {
+                    it.authorizationRequestRepository(oAuthAuthorizationRequestRepository)
                 }.successHandler(oAuthLoginSuccessHandler)
             }
             .build()
