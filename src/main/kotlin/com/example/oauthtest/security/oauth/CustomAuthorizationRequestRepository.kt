@@ -11,8 +11,8 @@ class CustomAuthorizationRequestRepository : AuthorizationRequestRepository<OAut
 
     private val requestStorage = mutableMapOf<String, OAuth2AuthorizationRequest>()
 
-    override fun loadAuthorizationRequest(request: HttpServletRequest): OAuth2AuthorizationRequest? {
-        return requestStorage["aaa"]
+    override fun loadAuthorizationRequest(request: HttpServletRequest?): OAuth2AuthorizationRequest {
+        TODO("Not yet implemented")
     }
 
     override fun removeAuthorizationRequest(
